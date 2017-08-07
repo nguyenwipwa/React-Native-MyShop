@@ -37,6 +37,7 @@ export default class OrderHistory extends Component {
                 >  OrderHistory
                 </HeaderView>
                 <FlatList
+                    style={{ margin: 5 }}
                     keyExtractor={(item, index) => item.id}
                     data={arrOrder}
                     renderItem={({ item }) => (

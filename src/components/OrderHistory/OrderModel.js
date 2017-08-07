@@ -45,11 +45,11 @@ export default class OrderModel extends Component {
                 </View>
                 <View style={styles.row}>
                     <Text> Status: </Text>
-                    <Text style={styles.txtStatus}> {this.props.status} </Text>
+                    <Text style={styles.txtStatus}> {this.props.status ? 'Completed' : 'Pendding'} </Text>
                 </View>
                 <View style={styles.row}>
                     <Text> Total: </Text>
-                    <Text style={styles.txtTotal}> {this.props.total} </Text>
+                    <Text style={styles.txtTotal}> {this.props.total}$ </Text>
                 </View>
             </View>
         );
