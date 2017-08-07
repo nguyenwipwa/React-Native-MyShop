@@ -5,6 +5,7 @@ import Shop from './Shop/Shop';
 import getToken from '../../api/getToken';
 import checkLogin from '../../api/checkLogin';
 import Global from '../Global';
+import ChangeInfo from '../ChangeInfo/ChangeInfo';
 
 
 export default class Main extends Component {
@@ -12,7 +13,7 @@ export default class Main extends Component {
     componentDidMount = () => {
         getToken()
             .then(token => token ? checkLogin(token)
-                .then(res => Global.onSignIn(res.user))
+                .then(res => Global.onSignIn(Global.user = res.user))
                 : console.log(token)
             );
     }
@@ -42,7 +43,8 @@ export default class Main extends Component {
                     main: { opacity: (2 - ratio) / 2 }
                 })}
             >
-                <Shop open={this.openControlPanel.bind(this)} />
+                 <Shop open={this.openControlPanel.bind(this)} /> 
+                {/* <ChangeInfo open={this.openControlPanel.bind(this)} /> */}
             </Drawer>
 
         );

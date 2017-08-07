@@ -4,5 +4,6 @@ module.exports = {
     decrNumber: null,
     incrNumber: null,
     onSignIn: null,
+    user: null,
 
 };

@@ -3,7 +3,7 @@ import EStyleSheet from 'react-native-extended-stylesheet';
 import DialogBox from 'react-native-dialogbox';
 import {
     View, Text, TouchableOpacity, Dimensions, Image, StyleSheet
-    , TextInput, Alert
+    , TextInput
 } from 'react-native';
 import register from '../../api/register';
 import login from '../../api/login';
@@ -20,6 +20,7 @@ const styles = EStyleSheet.create({
         backgroundColor: '#329576',
         padding: 6,
         justifyContent: 'space-between',
+        height: '100%'
     },
     viewInput: {
         flex: 1,
@@ -138,14 +139,6 @@ export default class Authentication extends Component {
     }
 
     showDialog(title, message) {
-        // Alert.alert(
-        //     title,
-        //     message,
-        //     [
-        //         { text: 'OK', onPress: () => console.log('OK Pressed') },
-        //     ],
-        //     { cancelable: false }
-        // );
         this.dialogbox.alert(message);
     }
     render() {

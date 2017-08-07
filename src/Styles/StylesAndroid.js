@@ -292,6 +292,39 @@ class StylesAndroid {
             flex: 1, flexDirection: 'row',
         }
     })
+    static styleChangeInfo = EStyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: '#f1f1f1',
+        },
+        viewContent: {
+            width: '100%',
+        },
+        txtInput: {
+            margin: 10,
+            borderWidth: 1,
+            borderColor: '#329576',
+            borderRadius: 20,
+            backgroundColor: 'white',
+            height: 50,
+            textAlign: 'center'
+        },
+        btnButton: {
+            margin: 10,
+            marginTop: 30,
+            borderWidth: 1,
+            borderColor: '#329576',
+            borderRadius: 20,
+            backgroundColor: '#329576',
+            height: 50,
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        txtButton: {
+            color: 'white',
+            fontWeight: 'bold',
+        }
+    })
 }
 export default StylesAndroid;
 
