@@ -7,6 +7,6 @@ module.exports = {
     user: null,
     gotoSearch: null,
     setListSearch: null,
-
+    
 
 };

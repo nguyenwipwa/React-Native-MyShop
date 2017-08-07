@@ -111,9 +111,10 @@ export default class Authentication extends Component {
                 console.log(res.user);
                 Global.onSignIn(res.user);
                 saveToken(res.token);
-                this.goBackToMain();
+                this.showDialog2('Đăng nhập thành công!')
+                    .then(() => this.goBackToMain());
             })
-            .catch(err => console.log(err));
+            .catch(err => this.showDialog2('Đăng nhập thất bại!'));
     }
     signIn() {
         this.setState({ isSignIn: true });
@@ -131,15 +132,24 @@ export default class Authentication extends Component {
             .then(res => {
                 if (res._bodyText === 'THANH_CONG') {
                     this.setState({ isSignIn: true });
-                    this.showDialog('Thông báo', 'Thành Công!');
+                    this.showDialog('Thông báo', 'Đăng kí thành Công!');
                 } else {
-                    this.showDialog('Thông báo', 'Thất bại!');
+                    this.showDialog('Thông báo', 'Đăng kí thất bại!');
                 }
             });
     }
 
     showDialog(title, message) {
         this.dialogbox.alert(message);
+    }
+    showDialog2(message) {
+        return this.dialogbox.tip({
+            title: 'Thông báo',
+            content: message,
+            btn: {
+                text: 'Ok'
+            }
+        });
     }
     render() {
         const isSignIn = this.state.isSignIn;

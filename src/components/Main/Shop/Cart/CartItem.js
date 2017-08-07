@@ -10,9 +10,6 @@ class CartItem extends Component {
 
     gotoDetail(idProduct) {
         const { navigator } = this.props;
-        console.log('====================================');
-        console.log(idProduct);
-        console.log('====================================');
         navigator.push({ name: 'PRODUCT_DETAIL', idProduct });
     }
     render() {
