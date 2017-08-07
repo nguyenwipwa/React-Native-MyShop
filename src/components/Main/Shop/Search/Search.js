@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import { View, ScrollView } from 'react-native';
-import sp1 from '../../../../media/temp/sp1.jpeg';
-import StylesAndroid from '../../../../Styles/StylesAndroid';
-import SearchItem from './SearchItem';
+import { Navigator } from 'react-native-deprecated-custom-components';
+import SearchView from './SearchView';
+import ProductDetail from '../ProductDetail/ProductDetail';
 
-
-const styles = StylesAndroid.styleCart;
-export default class Search extends Component {
-    goBack() {
-        const { navigator } = this.props;
-        navigator.pop();
-    }
+class Search extends Component {
     render() {
+        const { types, topProduct } = this.props;
         return (
-            <View style={styles.container}>
-                <ScrollView style={{ width: '100%', }}>
-                    <SearchItem img={sp1} />
-                    <SearchItem img={sp1} />
-                    <SearchItem img={sp1} />
-                    <SearchItem img={sp1} />
-                </ScrollView>
-            </View>
-
+            <Navigator
+                initialRoute={{ name: 'SEARCH_VIEW' }}
+                renderScene={(route, navigator) => {
+                    switch (route.name) {
+                        case 'SEARCH_VIEW': return <SearchView navigator={navigator} />;
+                        case 'PRODUCT_DETAIL': return <ProductDetail navigator={navigator} idProduct={route.idProduct} />;
+                        default: return;
+                    }
+                }}
+            />
         );
     }
 }
 
+export default Search;

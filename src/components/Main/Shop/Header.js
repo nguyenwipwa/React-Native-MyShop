@@ -3,8 +3,12 @@ import {
     View, Text, TouchableOpacity, Dimensions, Image, StyleSheet,
     TextInput
 } from 'react-native';
+import searchProduct from '../../../api/searchProduct';
+
 import icLogo from '../../../media/appIcon/ic_logo.png';
 import icmenu from '../../../media/appIcon/ic_menu.png';
+import Global from '../../Global';
+
 
 const { height } = Dimensions.get('window');
 
@@ -12,6 +16,14 @@ class Header extends Component {
     constructor(props) {
         super(props);
         this.state = { text: '' };
+    }
+    onSearchProduct() {
+        const { text } = this.state;
+        searchProduct(text)
+            .then(arr => {
+                Global.setListSearch(arr);
+            })
+            .catch(err => console.log(err));
     }
     render() {
         return (
@@ -24,6 +36,9 @@ class Header extends Component {
                     <Image source={icLogo} style={styleHeader.iconStyle} />
                 </View>
                 <TextInput
+                    blurOnSubmit
+                    onSubmitEditing={() => this.onSearchProduct()}
+                    onFocus={() => Global.gotoSearch()}
                     onChangeText={(text) => this.setState({ text })}
                     value={this.state.text} style={styleHeader.textStyle}
                     placeholder='Nhập sản phẩm tìm kiếm' underlineColorAndroid='#f0ffff'

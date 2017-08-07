@@ -34,6 +34,7 @@ class Shop extends Component {
         Global.deleteCart = this.deleteCart.bind(this);
         Global.incrNumber = this.incrNumber.bind(this);
         Global.decrNumber = this.decrNumber.bind(this);
+        Global.gotoSearch = this.gotoSearch.bind(this);
     }
     componentDidMount() {
         initData()
@@ -44,6 +45,9 @@ class Shop extends Component {
             .catch(err => console.log(err));
         getCart()
             .then(cartArray => this.setState({ cartArray }));
+    }
+    gotoSearch() {
+        this.setState({ selectedTab: 'search' });
     }
     incrNumber(key) {
         const newCart = this.state.cartArray.map(e => {

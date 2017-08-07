@@ -5,5 +5,8 @@ module.exports = {
     incrNumber: null,
     onSignIn: null,
     user: null,
+    gotoSearch: null,
+    setListSearch: null,
+
 
 };

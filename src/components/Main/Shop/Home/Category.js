@@ -49,9 +49,9 @@ const styles = EStyleSheet.create({
 });
 EStyleSheet.build();
 export default class Category extends Component {
-    gotoListProduct() {
+    gotoListProduct(e) {
         const { navigator } = this.props;
-        navigator.push({ name: 'LIST_PRODUCT' });
+        navigator.push({ name: 'LIST_PRODUCT', category: e });
     }
     render() {
         const { navigator, types } = this.props;
@@ -64,7 +64,7 @@ export default class Category extends Component {
             {types.map(e => (
                 <TouchableOpacity
                     key={e.id}
-                    onPress={this.gotoListProduct.bind(this)}
+                    onPress={() => this.gotoListProduct(e)}
                     style={{ height: height / 4, width: imageWitdh - 40 }}
                 >
                     <ItemCategory

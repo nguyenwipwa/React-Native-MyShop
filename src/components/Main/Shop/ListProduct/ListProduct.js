@@ -1,17 +1,39 @@
 import React, { Component } from 'react';
-import { Image, View, Text, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { Image, View, Text, ScrollView, TouchableOpacity, Dimensions, FlatList } from 'react-native';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import sp1 from '../../../../media/temp/sp1.jpeg';
+import getListProduct from '../../../../api/getListProduct';
+import URL from '../../../URL';
 
 import backIcon from '../../../../media/appIcon/backList.png';
 
 const { height } = Dimensions.get('window');
 export default class ListProduct extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            listProduct: []
+        };
+    }
+    componentDidMount() {
+        getListProduct(this.props.category.id, 1)
+            .then(arrProduct => this.setState({ listProduct: arrProduct }))
+            .catch(err => console.log(err));
+    }
+    gotoDetail(idProduct) {
+        const { navigator } = this.props;
+        console.log('====================================')
+        console.log(idProduct);
+        console.log('====================================')
+        navigator.push({ name: 'PRODUCT_DETAIL', idProduct });
+    }
     goBack() {
         const { navigator } = this.props;
         navigator.pop();
     }
     render() {
+        const { category } = this.props;
+        const { listProduct } = this.state;
         return (
             <View style={styles.container}>
                 <View style={styles.header}>
@@ -24,103 +46,32 @@ export default class ListProduct extends Component {
                             source={backIcon}
                         />
                     </TouchableOpacity>
-                    <Text style={styles.titleStyle}> Shop </Text>
+                    <Text style={styles.titleStyle}> {category.name} </Text>
                     <View style={styles.both} />
                 </View>
-                <ScrollView style={styles.wrapper}>
-                    <View style={{ alignItems: 'center' }}>
+                <FlatList
+                    style={styles.wrapper}
+                    data={listProduct}
+                    renderItem={({ item }) =>
                         <View style={styles.productInfo}>
                             <View style={styles.viewImage}>
-                                <Image style={styles.imageStyle} source={sp1} />
+                                <Image style={styles.imageStyle} source={{ uri: `${URL.URL_IMAGES}${item.images[0]}` }} />
                             </View>
                             <View style={styles.viewInfo}>
-                                <Text style={styles.txtName}> Nguyen Van Trong</Text>
-                                <Text style={styles.textPrice}> 117$ </Text>
-                                <Text style={styles.txtMaterial}> Mariter</Text>
+                                <Text style={styles.txtName}> {item.name.toUpperCase()}</Text>
+                                <Text style={styles.textPrice}> {item.price}$ </Text>
+                                <Text style={styles.txtMaterial}> {item.material.toUpperCase()}</Text>
                                 <View style={styles.infoBottom}>
-                                    <Text> Color </Text>
-                                    <View style={styles.circleColor} />
-                                    <Text style={styles.txtShow}> {'Color 1'.toUpperCase()} </Text>
+                                    <Text> Color {item.color} </Text>
+                                    <View style={[styles.circleColor, { backgroundColor: item.color.toLowerCase() }]} />
+                                    <TouchableOpacity onPress={() => this.gotoDetail(item.id)}>
+                                        <Text style={styles.txtShow}> {'SHOW detail'.toUpperCase()} </Text>
+                                    </TouchableOpacity>
                                 </View>
                             </View>
                         </View>
-                        <View style={styles.productInfo}>
-                            <View style={styles.viewImage}>
-                                <Image style={styles.imageStyle} source={sp1} />
-                            </View>
-                            <View style={styles.viewInfo}>
-                                <Text style={styles.txtName}> Nguyen Van Trong</Text>
-                                <Text style={styles.textPrice}> 117$ </Text>
-                                <Text style={styles.txtMaterial}> Mariter</Text>
-                                <View style={styles.infoBottom}>
-                                    <Text> Color </Text>
-                                    <View style={styles.circleColor} />
-                                    <Text style={styles.txtShow}> {'Color 1'.toUpperCase()} </Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.productInfo}>
-                            <View style={styles.viewImage}>
-                                <Image style={styles.imageStyle} source={sp1} />
-                            </View>
-                            <View style={styles.viewInfo}>
-                                <Text style={styles.txtName}> Nguyen Van Trong</Text>
-                                <Text style={styles.textPrice}> 117$ </Text>
-                                <Text style={styles.txtMaterial}> Mariter</Text>
-                                <View style={styles.infoBottom}>
-                                    <Text> Color </Text>
-                                    <View style={styles.circleColor} />
-                                    <Text style={styles.txtShow}> {'Color 1'.toUpperCase()} </Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.productInfo}>
-                            <View style={styles.viewImage}>
-                                <Image style={styles.imageStyle} source={sp1} />
-                            </View>
-                            <View style={styles.viewInfo}>
-                                <Text style={styles.txtName}> Nguyen Van Trong</Text>
-                                <Text style={styles.textPrice}> 117$ </Text>
-                                <Text style={styles.txtMaterial}> Mariter</Text>
-                                <View style={styles.infoBottom}>
-                                    <Text> Color </Text>
-                                    <View style={styles.circleColor} />
-                                    <Text style={styles.txtShow}> {'Color 1'.toUpperCase()} </Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.productInfo}>
-                            <View style={styles.viewImage}>
-                                <Image style={styles.imageStyle} source={sp1} />
-                            </View>
-                            <View style={styles.viewInfo}>
-                                <Text style={styles.txtName}> Nguyen Van Trong</Text>
-                                <Text style={styles.textPrice}> 117$ </Text>
-                                <Text style={styles.txtMaterial}> Mariter</Text>
-                                <View style={styles.infoBottom}>
-                                    <Text> Color </Text>
-                                    <View style={styles.circleColor} />
-                                    <Text style={styles.txtShow}> {'Color 1'.toUpperCase()} </Text>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.productInfo}>
-                            <View style={styles.viewImage}>
-                                <Image style={styles.imageStyle} source={sp1} />
-                            </View>
-                            <View style={styles.viewInfo}>
-                                <Text style={styles.txtName}> Nguyen Van Trong</Text>
-                                <Text style={styles.textPrice}> 117$ </Text>
-                                <Text style={styles.txtMaterial}> Mariter</Text>
-                                <View style={styles.infoBottom}>
-                                    <Text> Color </Text>
-                                    <View style={styles.circleColor} />
-                                    <Text style={styles.txtShow}> {'Color 1'.toUpperCase()} </Text>
-                                </View>
-                            </View>
-                        </View>
-                    </View>
-                </ScrollView >
+                    }
+                />
                 {/* <Text onPress={this.goBack.bind(this)}> Back </Text> */}
             </View >
         );
@@ -207,7 +158,6 @@ const styles = EStyleSheet.create({
     circleColor: {
         width: 15,
         height: 15,
-        backgroundColor: 'red',
         borderRadius: 100,
         marginTop: 3,
 

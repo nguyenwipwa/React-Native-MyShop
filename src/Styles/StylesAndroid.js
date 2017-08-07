@@ -112,7 +112,7 @@ class StylesAndroid {
             justifyContent: 'space-between',
             backgroundColor: '#2aa18b',
             width: '100%',
-            paddingVertical: 5,
+            paddingVertical: 10,
             borderRadius: 5,
             alignItems: 'center',
             paddingHorizontal: 5,

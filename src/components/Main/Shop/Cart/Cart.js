@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navigator } from 'react-native-deprecated-custom-components';
 import CartView from './CartView';
-
+import ProductDetail from '../ProductDetail/ProductDetail';
 
 class Cart extends Component {
     render() {
@@ -12,6 +12,7 @@ class Cart extends Component {
                 renderScene={(route, navigator) => {
                     switch (route.name) {
                         case 'CART_VIEW': return <CartView navigator={navigator} cartArray={cartArray} />;
+                        case 'PRODUCT_DETAIL': return <ProductDetail navigator={navigator} idProduct={route.idProduct} />;
                         default: return;
                     }
                 }}

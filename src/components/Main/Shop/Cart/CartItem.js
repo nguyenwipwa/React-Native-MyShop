@@ -8,6 +8,13 @@ const styles = StylesAndroid.styleCart;
 const { styleTxt, styleButton } = StylesAndroid;
 class CartItem extends Component {
 
+    gotoDetail(idProduct) {
+        const { navigator } = this.props;
+        console.log('====================================');
+        console.log(idProduct);
+        console.log('====================================');
+        navigator.push({ name: 'PRODUCT_DETAIL', idProduct });
+    }
     render() {
         const { viewTop, viewBottom, viewImage, viewInfo, viewNumber, wrapper, imgStyle } = styles;
         return (
@@ -45,7 +52,7 @@ class CartItem extends Component {
                                 <Text style={styleButton.buttonSmall}> - </Text>
                             </TouchableOpacity>
                         </View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.gotoDetail(this.props.id)}>
                             <Text style={styleTxt.txtShow}> {'Show Details'.toUpperCase()} </Text>
                         </TouchableOpacity>
                     </View>
