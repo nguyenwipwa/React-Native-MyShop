@@ -12,5 +12,7 @@ class URL {
     static URL_CHANGE_INFO = `${URL.HOST}change_info.php`
     static URL_LIST_PRODUCT = `${URL.HOST}product_by_type.php`
     static URL_SEARCH_PRODUCT = `${URL.HOST}search.php`
+    static URL_ORDER_HISTORY = `${URL.HOST}order_history.php`
+    
 }
 export default URL;

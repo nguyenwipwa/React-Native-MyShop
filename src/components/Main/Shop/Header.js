@@ -37,6 +37,7 @@ class Header extends Component {
                 </View>
                 <TextInput
                     blurOnSubmit
+                    selectTextOnFocus
                     onSubmitEditing={() => this.onSearchProduct()}
                     onFocus={() => Global.gotoSearch()}
                     onChangeText={(text) => this.setState({ text })}
