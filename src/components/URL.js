@@ -9,5 +9,6 @@ class URL {
     static URL_REGISTER = `${URL.HOST}register.php`
     static URL_LOGIN = `${URL.HOST}login.php`
     static URL_CHECK_LOGIN = `${URL.HOST}check_login.php`
+    static URL_CHANGE_INFO = `${URL.HOST}change_info.php`
 }
 export default URL;

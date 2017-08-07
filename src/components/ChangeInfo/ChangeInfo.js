@@ -3,6 +3,9 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import DialogBox from 'react-native-dialogbox';
 import HeaderView from '../../components/OrderHistory/HeaderView';
 import StylesAndroid from '../../Styles/StylesAndroid';
+import getToken from '../../api/getToken';
+import changeInfo from '../../api/changeInfo';
+import Global from '../Global';
 
 import icRight from '../../media/appIcon/backs.png';
 
@@ -20,15 +23,21 @@ export default class ChangeInfo extends Component {
             phoneNumber: user.phone
         };
     }
-
+    onChangeInfo() {
+        const { name, address, phoneNumber } = this.state;
+        getToken()
+            .then(token => changeInfo(token, name, phoneNumber, address))
+            .then(user => { this.handleOnPress('Đổi thành công!'); Global.onSignIn(user); })
+            .catch(err => this.handleOnPress('Đổi thất bại!'));
+    }
     goBackToMain() {
         const { navigator } = this.props;
         navigator.pop();
     }
-    handleOnPress = () => {
-        // alert 
-        // this.dialogbox.alert(1);
-        this.dialogbox.alert(this.state.name).then(() => this.dialogbox.alert('dismissed'));
+    handleOnPress(message) {
+        this.dialogbox.alert(message).then(() => {
+            this.goBackToMain();
+        });
     }
     render() {
         const { container, viewContent, txtInput, btnButton, txtButton } = styleChangeInfo;
@@ -72,7 +81,7 @@ export default class ChangeInfo extends Component {
                             onChangeText={txt => this.setState({ phoneNumber: txt })}
                         />
 
-                        <TouchableOpacity style={btnButton} onPress={this.handleOnPress}>
+                        <TouchableOpacity style={btnButton} onPress={this.onChangeInfo.bind(this)}>
                             <Text style={txtButton}>Xác nhận đổi thông tin</Text>
                         </TouchableOpacity>
                     </View>
