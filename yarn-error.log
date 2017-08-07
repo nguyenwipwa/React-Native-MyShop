@@ -1,8 +1,8 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js add react-native-dialogbox
+  C:\Program Files\nodejs\node.exe C:\Program Files\Yarn\bin\yarn.js add react-native-map
 
 PATH: 
-  C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Skype\Phone\;C:\Program Files\nodejs\;C:\Program Files\Yarn\bin;C:\Users\MyPC\AppData\Local\Android\sdk\platform-tools;C:\Users\MyPC\AppData\Roaming\npm;C:\Users\MyPC\AppData\Local\Yarn\bin;C:\Program Files\Microsoft VS Code\bin
+  C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Skype\Phone\;C:\Program Files\nodejs\;C:\Program Files\Yarn\bin;C:\Users\MyPC\AppData\Local\Android\sdk\platform-tools;C:\Program Files\Git\cmd;C:\Users\MyPC\AppData\Roaming\npm;C:\Users\MyPC\AppData\Local\Yarn\bin;C:\Program Files\Microsoft VS Code\bin
 
 Yarn version: 
   0.27.5
@@ -26,10 +26,11 @@ npm manifest:
   		"react": "16.0.0-alpha.12",
   		"react-native": "0.46.4",
   		"react-native-deprecated-custom-components": "^0.1.1",
+  		"react-native-dialogbox": "^0.6.6",
   		"react-native-drawer": "^2.3.0",
   		"react-native-extended-stylesheet": "^0.6.0",
   		"react-native-svg": "^5.3.2",
-  		"react-native-swiper": "^1.5.4",
+  		"react-native-swiper": "^1.5.5",
   		"react-native-tab-navigator": "^0.3.3",
   		"react-navigation": "^1.0.0-beta.11",
   		"redux": "^3.7.2"
@@ -3723,6 +3724,10 @@ Lockfile:
       react-timer-mixin "^0.13.2"
       rebound "^0.0.13"
   
+  react-native-dialogbox@^0.6.6:
+    version "0.6.6"
+    resolved "https://registry.yarnpkg.com/react-native-dialogbox/-/react-native-dialogbox-0.6.6.tgz#b60cf14b6004c83385e3f3eac3c67090b36298fc"
+  
   react-native-dismiss-keyboard@1.0.0:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
@@ -3759,9 +3764,11 @@ Lockfile:
       color "^0.11.1"
       lodash "^4.16.6"
   
-  react-native-swiper@^1.5.4:
-    version "1.5.4"
-    resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.4.tgz#a85535b5374ef8d605a7a720e447ac46816ac448"
+  react-native-swiper@^1.5.5:
+    version "1.5.5"
+    resolved "https://registry.yarnpkg.com/react-native-swiper/-/react-native-swiper-1.5.5.tgz#faf306fcaa676465f50459f16ee25c40c2d70e28"
+    dependencies:
+      prop-types "^15.5.10"
   
   react-native-tab-navigator@^0.3.3:
     version "0.3.3"
